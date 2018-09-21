@@ -2,9 +2,9 @@ class NewAccountPage
   include PageObject
 
   DEFAULT_DATA = {
-      'birth_month' => 'May',
-      'birth_day' => '28',
-      'birth_year' => '1981',
+      'birth_month' => Date.parse(Faker::Date.backward(365).to_s).strftime('%B'),
+      'birth_day' => Faker::Number.positive(1, 28).to_s,
+      'birth_year' => Faker::Number.positive(1910, 2002).to_s,
       'username' => Faker::Name.first_name,
       'email' => Faker::Internet.email,
       'password' => 'AsPassword1',
