@@ -16,10 +16,14 @@ Feature:
 
   Scenario: Attempt to create an adultswim account with an invalid email address
     When I enter my information with an invalid email address
+    And I check the terms of service box
+    And I click submit
     Then I should see "E-mail address is invalid"
 
   Scenario: Attempt to create an adultswim account with unmatching password re-enter
     When I enter my information with unmatching password re-enter
+    And I check the terms of service box
+    And I click submit
     Then I should see "Passwords do not match"
 
   Scenario: Create a new account on adultswim.com

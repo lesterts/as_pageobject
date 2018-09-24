@@ -5,7 +5,7 @@ class NewAccountPage
       'birth_month' => Date.parse(Faker::Date.backward(365).to_s).strftime('%B'),
       'birth_day' => Faker::Number.positive(1, 28).to_s,
       'birth_year' => Faker::Number.positive(1910, 2002).to_s,
-      'username' => Faker::Name.first_name,
+      'username' => Faker::Name.first_name + Faker::Number.number(3),
       'email' => Faker::Internet.email,
       'password' => 'AsPassword1',
       'password_retype' => 'AsPassword1'
@@ -21,13 +21,13 @@ class NewAccountPage
   #    'password_retype' => 'AsPassword1!'
   #}
 
-  select_list(:birth_month, xpath: '//*[@id="AdultSwimRegisterForm__birthMonth"]')
+  select_list(:birth_month, id: 'AdultSwimRegisterForm__birthMonth')
   select_list(:birth_day, xpath: '//*[@id="AdultSwimRegisterForm"]/div/div/div[2]/div/div/div[2]/div/select')
   select_list(:birth_year, xpath: '//*[@id="AdultSwimRegisterForm"]/div/div/div[2]/div/div/div[3]/div/select')
-  text_field(:username, xpath: '//*[@id="AdultSwimRegisterForm__username"]')
-  text_field(:email, xpath: '//*[@id="AdultSwimRegisterForm__email"]')
-  text_field(:password, xpath: '//*[@id="AdultSwimRegisterForm__password"]')
-  text_field(:password_retype, xpath: '//*[@id="AdultSwimRegisterForm__passwordRetype"]')
+  text_field(:username, id: 'AdultSwimRegisterForm__username')
+  text_field(:email, id: 'AdultSwimRegisterForm__email')
+  text_field(:password, id: 'AdultSwimRegisterForm__password')
+  text_field(:password_retype, id: 'AdultSwimRegisterForm__passwordRetype')
   checkbox(:tos_checkbox, xpath: '//*[@id="AdultSwimRegisterForm"]/div/div/div[8]/div/div/label/input')
   button(:submit, xpath: '//*[@id="AdultSwimRegisterForm"]/div/div/div[9]/div/button')
 
